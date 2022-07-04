@@ -1,0 +1,49 @@
+<%-include('../cabecalho.ejs')%>
+
+    <form method="post">
+        <input type="text" class="pesquisa" name="pesquisa" placeholder="Digite o nome que deseja pesquisar.">
+        <input type="submit" value="Pesquisar">
+    </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Autor</th>
+             <th>Título</th>
+             <th>Data de Publicação</th>
+            <th>Foto</th>
+            <th>Ações</th>
+        </tr>
+        <% Usuarios.forEach(function(usuario){ %>
+        <tr>
+            <td>
+                <%=usuario._id%>
+            </td>
+            <td>
+                <%=usuario.autor%>
+            </td>
+            <td>
+                <%=usuario.titulo%>
+            </td>
+            <td>
+                <% let x = usuario.dataPub.getMonth()+1 %>
+                <%=usuario.dataPub.getDate()+1+"/"+x+"/"+usuario.dataPub.getFullYear()%>
+
+            </td>
+            
+            <td>
+                <img class="img-responsive" 
+                    src="/fotos/<%=usuario.foto%>" 
+                    alt="Foto do usuário">
+            </td>
+            <td>
+                <a href="/usuario/edt/<%=usuario._id%>">
+                    <img class="img-responsive" src="/edit.png" alt="Editar">
+                </a>
+                <a href="/usuario/del/<%=usuario._id%>">
+                    <img class="img-responsive" src="/delete.png" alt="Deletar">
+                </a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+<%-include('../rodape.ejs')%>

@@ -1,0 +1,15 @@
+<%-include('../cabecalho.ejs')%>
+    <form method="post" enctype="multipart/form-data">
+        Id: <input type="text" name="id" 
+        required value="<%=Usuario._id%>" readonly ><br>
+        Autor: <input type="text" name="autor" 
+            placeholder="Digite o nome do Autor" required ><br>
+        Titulo: <input type="text" name="titulo"
+        placeholder="Digite seu Título" required><br>
+        Data de Publicacao: <input type="date" name="dataPub" 
+            placeholder="Digite a data de publicação" required><br>
+        Foto: <input type="file" name="foto" 
+            accept="image/*" required><br>
+        <input type="submit" value="Salvar">
+    </form>
+<%-include('../rodape.ejs')%>
